@@ -8,7 +8,10 @@ import apolloClientImage from './assets/images/apollo-client.png';
 import flatStructureExample from './assets/images/flat-structure-example.png';
 import keyFieldsApi from './assets/images/key-fields-api.png';
 import badExampleQuery from './assets/images/bad-example-query.png';
-import apolloClientIcon from "./assets/icons/apollo-client.png";
+import mutationExample from './assets/images/mutation-example.png';
+import deletingItemExample from './assets/images/deleting-item-example.png';
+import addingItemExample from './assets/images/adding-item-example.png';
+import apolloClientIcon from './assets/icons/apollo-client.png';
 import goBack from './assets/gifs/go-back.gif';
 import difficult from './assets/gifs/difficult.gif';
 import rainbow from './assets/gifs/rainbow.gif';
@@ -18,7 +21,7 @@ export const theme = myTheme;
 
 <Head>
   <title>Cache Management on AC3</title>
-  <link rel="icon" href={apolloClientIcon} />
+  <link rel='icon' href={apolloClientIcon} />
 </Head>
 
 <Layout>
@@ -80,7 +83,7 @@ We need to understand how cache works on the web
 - Via HTTP headers (Last-Modified, Cache-Control, etc)
 - Control over the browser requests from the server 
 
-<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">
+<a href='https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html'>
   https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html
 </a>
 
@@ -149,7 +152,7 @@ We need to understand how cache works on the web
 # But Apollo Client provides an abstraction layer to manage cache
 
 <img 
-  src="https://wp.apollographql.com/wp-content/uploads/2020/07/the_cache_1.png" 
+  src='https://wp.apollographql.com/wp-content/uploads/2020/07/the_cache_1.png' 
   style={{
     height: 400,
     borderRadius: 10
@@ -160,8 +163,8 @@ We need to understand how cache works on the web
 
 <small>
   Source: 
-  {" "}
-  <a href="https://www.apollographql.com/blog/demystifying-cache-normalization/">
+  {' '}
+  <a href='https://www.apollographql.com/blog/demystifying-cache-normalization/'>
   https://www.apollographql.com/blog/demystifying-cache-normalization/
   </a>
 </small>
@@ -435,6 +438,74 @@ Similar to `network-only`, but it doesn't save the data on the cache.
 2. The server responds with the data 
 
 </Layout>
+
+---
+
+## Updating the cache 
+Apollo will update the cache automatically if the mutation response always return the new data with the **same type** as the query object, in order to retrieve the unique identifer and merge the cache data.
+
+If a mutation changes a single entity and returns the value with the same type as the current query object, we don't need to worry about 
+updating the cache manually. 
+
+<img src={mutationExample} style={{ height: 400 }} />
+
+---
+
+## Cases when the cache is automatically updated:
+
+- Editing a single entity and returning the same type on the response object
+- Editing many entities and returning the same types on the response objects 
+
+All the components executing the query will get re-rendered when the cache is updated
+
+---
+
+### Cases when the cache isn't automatically updated because the merge isn't possible:
+
+- The response data isn't related with the query type 
+- The entire set of objects isn't returned on the response data 
+- The mutation doesn't return the data with the same order as the cached data 
+- The mutation adds or remove items 
+
+The cache doesn't know how the array of items should change - In these cases, we need to 
+update the cache manually 
+
+---
+
+### Cases when the cache isn't automatically updated because the merge isn't possible:
+
+- The response data isn't related with the query type 
+- The entire set of objects isn't returned on the response data 
+- The mutation doesn't return the data with the same order as the cached data 
+- The mutation adds or remove items 
+
+#### How we should deal with these cases? 
+
+---
+
+
+### Cases when the cache isn't automatically updated because the merge isn't possible:
+
+- The response data isn't related with the query type 
+- The entire set of objects isn't returned on the response data 
+- The mutation doesn't return the data with the same order as the cached data 
+- The mutation adds or remove items 
+
+#### How we should deal with these cases? 
+
+### Let's write a update function to update the cache manually! 🎉
+
+---
+
+# Updating the cache when adding an item 
+
+<img src={addingItemExample} style={{ height: 550 }} />
+
+---
+
+# Updating the cache when deleting an item 
+
+<img src={deletingItemExample} style={{ height: 550 }} />
 
 ---
 
