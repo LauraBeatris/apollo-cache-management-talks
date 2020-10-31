@@ -1,10 +1,8 @@
 {
   "scripts": {
     "start": "mdx-deck src/deck.mdx",
-    "build:pdf": "mdx-deck pdf src/deck.mdx",
-    "build:site": "mdx-deck build src/deck.mdx",
-    "postbuild": "cpy --parents \"public/**\" ./dist",
-    "build": "yarn build:site && npm run build:pdf"
+    "build": "mdx-deck build src/deck.mdx",
+    "postbuild": "cpy --parents \"public/**\" ./dist"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
