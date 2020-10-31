@@ -258,7 +258,7 @@ We need to understand how cache works on the web
 
 ---
 
-### Let's see the steps with more details with the images provided on https://www.apollographql.com/blog/demystifying-cache-normalization/
+### Let's see the normalization steps with more details with the images provided on https://www.apollographql.com/blog/demystifying-cache-normalization/
 
 ---
 
@@ -289,7 +289,7 @@ We need to understand how cache works on the web
 <Layout isInvert>
 <Invert>
 
-# Assigning a unique identifier to each object by using the ``id`` and ``__typename``
+# Assigning a unique identifier to each object by using the ``id`` and ``__typename`` fields
 
 <img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_27_1-1024x346.png" style={{ width: "85%" }} />
 
@@ -369,6 +369,70 @@ We need to understand how cache works on the web
 <Layout>
 
 # Let's dive into cache policies in order to understand how to use the cached data
+
+- cache-first (Default)
+- cache-and-network 
+- network-only 
+- no-cache 
+
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+# cache-first
+
+1. Executes the query and checks for the cached data. 
+2. If the data is cached, it's going to be returned directly, avoiding the network requests. 
+3. If there's no cache data, Apollo will make a network request in order to get the response data and save it on the cache.
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+# cache-and-network
+
+Recommended for data that is **frequently updated**. Example: Social media applications. 
+It'll always return the up-to-date data.
+
+1. Executes the query and checks for the cached data. 
+2. If the data is cached, it's going to be returned directly. 
+3. Even if the data is on the cache on not, Apollo will make a network request in order to get the up-to-date data. 
+4. Update the cached data by merging the response data 
+
+</Layout>
+
+--- 
+
+<Layout isInvert>
+<Invert>
+
+# network-only 
+
+This policy will **never return out-to-date data** because the network requests will always be
+executed, and the data will be saved on the cache store at the same time. 
+
+1. Executes the query and makes the network requests
+2. The server responds with the data and the cache is updated 
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+# no-cache  
+
+Similar to `network-only`, but it doesn't save the data on the cache.
+
+1. Executes the query and makes the network requests
+2. The server responds with the data 
 
 </Layout>
 
