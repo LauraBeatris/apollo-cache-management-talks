@@ -20,8 +20,8 @@ const socialMedias = [
 const SocialMediaHandle = () => (
   <Container>
     {
-      socialMedias.map(socialMedia => (
-        <IconContainer>
+      socialMedias.map((socialMedia, index) => (
+        <IconContainer key={String(index)}>
           {socialMedia.icon}
           <span>{socialMedia.user}</span>
         </IconContainer>

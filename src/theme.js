@@ -9,6 +9,9 @@ const theme = {
   styles: {
     h1: {
       textAlign: "center"
+    },
+    h2: {
+      textAlign: "center"
     }
   }
 };

@@ -1,4 +1,4 @@
-import { Head, Steps, Split, Invert, SplitRight } from 'mdx-deck';
+import { Head, Steps } from 'mdx-deck';
 
 import SocialMediaHandle from './components/SocialMediaHandle';
 import Layout from "./components/Layout";
@@ -6,9 +6,10 @@ import end from './assets/images/end.png';
 import clientSideCashing from './assets/images/client-side-cashing.png';
 import apolloClientImage from './assets/images/apollo-client.png';
 import apolloClientIcon from "./assets/icons/apollo-client.png";
-import goBackGif from './assets/gifs/go-back.gif';
-import difficultGif from "./assets/gifs/difficult.gif";
-import myTheme from "./theme";
+import goBack from './assets/gifs/go-back.gif';
+import difficult from './assets/gifs/difficult.gif';
+import rainbow from './assets/gifs/rainbow.gif';
+import myTheme from './theme';
 
 export const theme = myTheme;
 
@@ -37,7 +38,7 @@ export const theme = myTheme;
 
 ### Let's go back for a minute 
 
-<img src={goBackGif} style={{ maxHeight: 400 }} />
+<img src={goBack} style={{ maxHeight: 400 }} />
 
 We need to understand how cache works on the web
 
@@ -108,9 +109,61 @@ We need to understand how cache works on the web
 
 <Layout>
 
-# But persisting data through cache isn't that easy  
+# But dealing with cache on GraphQL isn't that easy  
 
-<img src={difficultGif} style={{ height: 400 }} />
+<img src={difficult} style={{ height: 400 }} />
+
+</Layout>
+
+---
+
+<Layout>
+
+### Reasons: 
+
+<Steps>
+
+- GraphQL API's hits a single endpoint 
+- Hard to predic the response because of the flexibity of fields 
+- GraphQL clients send bodies to the server with POST method instead of GET
+
+</Steps>
+
+</Layout>
+
+---
+
+<Layout>
+
+# But Apollo Client provides an abstraction layer to manage cache
+
+<img 
+  src="https://wp.apollographql.com/wp-content/uploads/2020/07/the_cache_1.png" 
+  style={{
+    height: 400,
+    borderRadius: 10
+  }}
+/>
+
+<br />
+
+<small>
+  Source: 
+  {" "}
+  <a href="https://www.apollographql.com/blog/demystifying-cache-normalization/">
+  https://www.apollographql.com/blog/demystifying-cache-normalization/
+  </a>
+</small>
+
+</Layout>
+
+---
+
+<Layout>
+
+### Now we just need to learn the cache API :)
+
+<img src={rainbow} style={{ height: 350 }} />
 
 </Layout>
 
