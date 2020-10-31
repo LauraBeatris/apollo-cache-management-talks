@@ -1,10 +1,17 @@
 {
   "scripts": {
-    "start": "mdx-deck src/deck.mdx"
+    "start": "mdx-deck src/deck.mdx",
+    "build:pdf": "mdx-deck pdf src/deck.mdx",
+    "build:site": "mdx-deck build src/deck.mdx",
+    "postbuild": "cpy --parents \"public/**\" ./dist",
+    "build": "yarn build:site && npm run build:pdf"
+  },
+  "devDependencies": {
+    "cpy-cli": "^3.1.1",
+    "mdx-deck": "^4.1.1"
   },
   "dependencies": {
     "@code-surfer/themes": "^3.1.1",
-    "mdx-deck": "^4.1.1",
     "react-icons": "^3.9.0",
     "styled-components": "^5.2.1"
   }
