@@ -1,5 +1,7 @@
 # Apollo Cache Management Talk 
 
+<img src="./docs/slides-preview.png" />
+
 ## Development
 
 To run the presentation deck in development mode:
