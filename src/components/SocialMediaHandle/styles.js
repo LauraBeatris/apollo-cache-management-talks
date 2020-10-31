@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 20%; 
@@ -20,4 +20,10 @@ export const IconContainer = styled.div`
   span, svg { 
     font-size: 20px;
   }  
+
+  ${({ isInvert }) => isInvert && css`
+    span { 
+      color: #FFF;
+    }
+  `}
 `;

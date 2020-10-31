@@ -1,4 +1,4 @@
-import { Head, Steps } from 'mdx-deck';
+import { Head, Steps, Invert } from 'mdx-deck';
 
 import SocialMediaHandle from './components/SocialMediaHandle';
 import Layout from "./components/Layout";
@@ -34,13 +34,17 @@ export const theme = myTheme;
 
 ---
 
-<Layout>
+<Layout isInvert>
+
+<Invert>
 
 ### Let's go back for a minute 
 
 <img src={goBack} style={{ maxHeight: 400 }} />
 
 We need to understand how cache works on the web
+
+</Invert>
 
 </Layout>
 
@@ -107,11 +111,15 @@ We need to understand how cache works on the web
 
 ---
 
-<Layout>
+<Layout isInvert>
+
+<Invert>
 
 # But dealing with cache on GraphQL isn't that easy  
 
 <img src={difficult} style={{ height: 400 }} />
+
+</Invert>
 
 </Layout>
 
@@ -164,6 +172,26 @@ We need to understand how cache works on the web
 ### Now we just need to learn the cache API :)
 
 <img src={rainbow} style={{ height: 350 }} />
+
+</Layout>
+
+---
+
+<Layout isInvert>
+
+<Invert>
+
+# What happens if you don't understand the AC cache api:
+
+<Steps>
+
+- Having unnecessary network requests
+- Using the wrong fetch policy and leading to a bad UX 
+- Caching the wrong entities 
+
+</Steps>
+
+</Invert>
 
 </Layout>
 

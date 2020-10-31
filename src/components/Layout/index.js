@@ -3,14 +3,18 @@ import React from "react";
 import SocialMediaHandle from "../SocialMediaHandle";
 import { FooterContainer } from "./styles";
 
-const Layout = ({ children, showFooter = true }) => (
+const Layout = ({ 
+  isInvert = false, 
+  showFooter = true,
+  children, 
+}) => (
   <>
     {children}
 
     {
       showFooter && (
         <FooterContainer>
-          <SocialMediaHandle />
+          <SocialMediaHandle isInvert={isInvert}/>
         </FooterContainer>
       )
     }

@@ -17,11 +17,14 @@ const socialMedias = [
   }
 ]
 
-const SocialMediaHandle = () => (
+const SocialMediaHandle = ({ isInvert = false }) => (
   <Container>
     {
       socialMedias.map((socialMedia, index) => (
-        <IconContainer key={String(index)}>
+        <IconContainer 
+          isInvert={isInvert} 
+          key={String(index)}
+        >
           {socialMedia.icon}
           <span>{socialMedia.user}</span>
         </IconContainer>
