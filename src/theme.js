@@ -12,6 +12,17 @@ const theme = {
     },
     h2: {
       textAlign: "center"
+    },
+    h3: {
+      textAlign: "center"
+    },
+    h4: {
+      textAlign: "center"
+    },
+    a: {
+      textAlign: "center",
+      fontSize: 20,
+      color: "#1DA1F2"
     }
   }
 };

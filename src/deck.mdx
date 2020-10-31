@@ -2,9 +2,12 @@ import { Head, Steps, Invert } from 'mdx-deck';
 
 import SocialMediaHandle from './components/SocialMediaHandle';
 import Layout from "./components/Layout";
-import end from './assets/images/end.png';
+import databaseNormalization from './assets/images/database-normalization.png';
 import clientSideCashing from './assets/images/client-side-cashing.png';
 import apolloClientImage from './assets/images/apollo-client.png';
+import flatStructureExample from './assets/images/flat-structure-example.png';
+import keyFieldsApi from './assets/images/key-fields-api.png';
+import badExampleQuery from './assets/images/bad-example-query.png';
 import apolloClientIcon from "./assets/icons/apollo-client.png";
 import goBack from './assets/gifs/go-back.gif';
 import difficult from './assets/gifs/difficult.gif';
@@ -181,7 +184,7 @@ We need to understand how cache works on the web
 
 <Invert>
 
-# What happens if you don't understand the AC cache api:
+# What happens if you don't understand the AC cache API:
 
 <Steps>
 
@@ -192,6 +195,180 @@ We need to understand how cache works on the web
 </Steps>
 
 </Invert>
+
+</Layout>
+
+---
+
+<Layout>
+
+# Important topics about cache management on AC3 
+
+- Cache Normalization
+- Fetch Policies
+- Type Policies
+- Field Policies 
+- Pagination 
+
+</Layout>
+
+---
+
+<Layout>
+
+# Cache Normalization
+
+### AC3 uses in-memory caching, which is a normalized data store. 
+### But how is the process to normalize the cache data? And what's normalization at all?
+
+</Layout>
+
+---
+
+<Invert>
+
+# Data normalization on relational databases 
+
+### "Database normalization is the process of restructuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity."
+
+[https://www.sqlshack.com/what-is-database-normalization-in-sql-server/#:~:text=%E2%80%9CDatabase%20normalization%20is%20the%20process,part%20of%20his%20relational%20model](https://www.sqlshack.com/what-is-database-normalization-in-sql-server/#:~:text=%E2%80%9CDatabase%20normalization%20is%20the%20process,part%20of%20his%20relational%20model)
+
+<img src={databaseNormalization} style={{ height: 350 }} />
+
+</Invert>
+
+--- 
+
+<Layout>
+
+# Normalization algorithm on AC3 
+
+#### The response data objects are normalized before being saved to the cache store, but this process has some steps:
+
+<Steps>
+
+- The response data objects are splitted 
+- Each object receive an unique identifier, which is calculated by the `id` field and `__typename`
+- The normalized items are stored in a flat object 
+- After executing another request, the response data goes throught the same process and if there's a object with the same ID on the store, the fields of those object will be merged.
+
+</Steps>
+
+</Layout>
+
+---
+
+### Let's see the steps with more details with the images provided on https://www.apollographql.com/blog/demystifying-cache-normalization/
+
+---
+
+<Invert>
+
+# Fetching the data and starting the process to normalize it
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/GetAllTodos_1-1024x311.png" style={{ width: "80%" }} />
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_25-1-1024x275.png" style={{ width: "80%" }} />
+
+</Invert>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+# Splitting the response in individual objects 
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_26_1-1024x721.png" style={{ width: "85%", height: "55%" }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+# Assigning a unique identifier to each object by using the ``id`` and ``__typename``
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_27_1-1024x346.png" style={{ width: "85%" }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+## Customizing the unique identifier of a type 
+
+#### AC3 provides an easy [API](https://www.apollographql.com/docs/react/v3.0-beta/caching/cache-configuration/#customizing-identifier-generation-by-type) to customize the unique identifier of a certain type.
+
+<img src={keyFieldsApi} />
+
+</Layout>
+
+---
+
+<Layout>
+
+## Don't forget to fetch the unique identifiers of a type ⚠️
+
+### By not fetching the unique identifiers of a type, the response data won't be normalized and the cache won't be correctly stored 
+
+<img src={badExampleQuery} style={{ height: 450 }} />
+
+#### The object's fields are merged by acessing the store with the type identifier
+
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+## Flattened Data Structure in which the normalized items are stored
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_28-1024x346.png" style={{ height: 400 }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+### Since it's a flat data structure, the objects are accessible throught their unique identifiers, example:
+
+<img src={flatStructureExample} style={{ height: 400 }}/>
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+### Besides storing the normalized objects, the queries are also stored in order to maintain the list items order
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_29_1-1024x596.png" style={{ height: "65%"}} />
+
+<br />
+
+<span>In fact, Apollo caches <strong>any</strong> GraphQL operations</span>
+
+<br />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+# Let's dive into cache policies in order to understand how to use the cached data
 
 </Layout>
 
