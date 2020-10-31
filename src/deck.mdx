@@ -11,6 +11,11 @@ import badExampleQuery from './assets/images/bad-example-query.png';
 import mutationExample from './assets/images/mutation-example.png';
 import deletingItemExample from './assets/images/deleting-item-example.png';
 import addingItemExample from './assets/images/adding-item-example.png';
+import disablingNormalizationExample from './assets/images/disabling-normalization-example.png';
+import readFunctionExample from './assets/images/read-function-example.png';
+import mergeFunctionExample from './assets/images/merge-function-example.png';
+import paginationHelperExample from './assets/images/pagination-helper-example.png';
+import typePoliciesExample from './assets/images/type-policies-example.png';
 import apolloClientIcon from './assets/icons/apollo-client.png';
 import goBack from './assets/gifs/go-back.gif';
 import difficult from './assets/gifs/difficult.gif';
@@ -506,6 +511,49 @@ update the cache manually
 # Updating the cache when deleting an item 
 
 <img src={deletingItemExample} style={{ height: 550 }} />
+
+---
+
+# Disabling cache normalization 
+
+The normalization process is really important in order to avoid redudant data on the 
+cache and manage changes to entities. Therefore, there are types of data that shouldn't be 
+normalized, in cases it has large quantities and never receive updates. 
+
+The Type Policy API let's us disable the normalization for particular types: 
+
+<img src={disablingNormalizationExample} style={{ height: "50%" }} />
+
+---
+
+# Type Policies 
+
+AC3 provides an API to customize how the cache interacts with specific types, by mapping 
+the ``__typename`` to ``typePolicies`` option when creating a new ``InMemoryCache`` 
+
+<img src={typePoliciesExample} style={{ height: "50%" }}/>
+
+---
+
+# Field Policies - Customizing the behavior of cached fields 
+
+We're able to customize how a particular field is read or written in the , by 
+proving a `read` and `merge` options.
+
+---
+
+<img src={readFunctionExample} style={{ height: "50%" }}/>
+
+<img src={mergeFunctionExample} style={{ height: "50%"}} />
+
+---
+
+# Pagination Helpers 
+
+We can also use field policies to handle pagination. AC3 exports pagination helpers, as the pagination is generic and can
+work for list of entities. 
+
+<img src={paginationHelperExample} style={{ height: "50%" }} />
 
 ---
 
