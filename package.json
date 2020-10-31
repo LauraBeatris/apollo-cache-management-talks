@@ -1,13 +1,11 @@
 {
-  "private": true,
-  "version": "1.0.0",
   "scripts": {
-    "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx"
+    "start": "mdx-deck src/deck.mdx"
   },
-  "devDependencies": {
-    "code-surfer": "3.1.0",
-    "mdx-deck": "3.0.13"
-  },
-  "name": "my-deck"
+  "dependencies": {
+    "@code-surfer/themes": "^3.1.1",
+    "mdx-deck": "^4.1.1",
+    "react-icons": "^3.9.0",
+    "styled-components": "^5.2.1"
+  }
 }

@@ -1,0 +1,108 @@
+import { Head, Steps, Split, Invert, SplitRight } from 'mdx-deck';
+import { github } from "@code-surfer/themes";
+
+import SocialMediaHandle from './components/SocialMediaHandle';
+import end from './assets/images/end.png';
+import clientSideCashing from './assets/images/client-side-cashing.png';
+import apolloClientImage from './assets/images/apollo-client.png';
+import goBackGif from './assets/gifs/go-back.gif';
+
+import apolloClientIcon from "./icons/apollo-client.png";
+
+export const theme = {
+  ...github,
+  googleFont: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap",
+  fonts: {
+    body: '"Quicksand", Open Sans',
+  },
+}
+
+<Head>
+  <title>Cache Management on AC3</title>
+  <link rel="icon" href={apolloClientIcon} />
+</Head>
+
+<Footer>
+  <SocialMediaHandle />
+</Footer>
+
+<img
+  src={apolloClientImage} 
+  style={{
+    height: 100,
+    marginBottom: '2em'
+  }}
+/>
+
+## Cache Management on AC3
+
+Laura Beatris, Full Stack Developer
+
+---
+
+### Let's go back for a minute 
+
+<img src={goBackGif} style={{ maxHeight: 400 }} />
+
+We need to understand how cache works on the web
+
+---
+
+# What is cache and why it's necessary?
+
+<Steps>
+
+- Cache data is stored on your computer or phone when you browse the internet
+- Decreases the response time 
+- Avoid unnecessary requests to the server
+- Reduces bandwidth = Benefits the user 
+
+</Steps>
+
+---
+
+# Client Side Cashing
+
+<img src={clientSideCashing} style={{ height: 400 }} />
+
+- Exists since 90's
+- Via HTTP headers (Last-Modified, Cache-Control, etc)
+- Control over the browser requests from the server 
+
+<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">
+  https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html
+</a>
+
+---
+
+## Client Cache, Local Storage, Session Storage...
+
+---
+
+## Client Cache, Local Storage, Session Storage...
+
+### It all ends up on the same goal
+
+---
+
+# Persisting data on the web!
+
+---
+
+# Persisting data through cache is hard 
+
+---
+
+<img
+  src={end}
+  style={{
+    maxHeight: 100,
+    marginBottom: '1.5em'
+  }}
+/>
+
+- Slides: https://apollo-cache-management-talk.vercel.app/
+
+<h3>
+  <SocialMediaHandle />
+</h3>
