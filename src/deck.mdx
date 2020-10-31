@@ -1,21 +1,16 @@
 import { Head, Steps, Split, Invert, SplitRight } from 'mdx-deck';
-import { github } from "@code-surfer/themes";
 
 import SocialMediaHandle from './components/SocialMediaHandle';
 import Layout from "./components/Layout";
 import end from './assets/images/end.png';
 import clientSideCashing from './assets/images/client-side-cashing.png';
 import apolloClientImage from './assets/images/apollo-client.png';
-import goBackGif from './assets/gifs/go-back.gif';
 import apolloClientIcon from "./assets/icons/apollo-client.png";
+import goBackGif from './assets/gifs/go-back.gif';
+import difficultGif from "./assets/gifs/difficult.gif";
+import myTheme from "./theme";
 
-export const theme = {
-  ...github,
-  googleFont: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap",
-  fonts: {
-    body: '"Quicksand", Open Sans',
-  },
-}
+export const theme = myTheme;
 
 <Head>
   <title>Cache Management on AC3</title>
@@ -113,7 +108,9 @@ We need to understand how cache works on the web
 
 <Layout>
 
-# Persisting data through cache is difficult  
+# But persisting data through cache isn't that easy  
+
+<img src={difficultGif} style={{ height: 400 }} />
 
 </Layout>
 
