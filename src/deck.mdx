@@ -2,6 +2,7 @@ import { Head, Steps, Split, Invert, SplitRight } from 'mdx-deck';
 import { github } from "@code-surfer/themes";
 
 import SocialMediaHandle from './components/SocialMediaHandle';
+import Layout from "./components/Layout";
 import end from './assets/images/end.png';
 import clientSideCashing from './assets/images/client-side-cashing.png';
 import apolloClientImage from './assets/images/apollo-client.png';
@@ -21,23 +22,23 @@ export const theme = {
   <link rel="icon" href={apolloClientIcon} />
 </Head>
 
-<Footer>
-  <SocialMediaHandle />
-</Footer>
+<Layout>
+  <img
+    src={apolloClientImage} 
+    style={{
+      height: 100,
+      marginBottom: '2em'
+    }}
+  />
 
-<img
-  src={apolloClientImage} 
-  style={{
-    height: 100,
-    marginBottom: '2em'
-  }}
-/>
+  ## Cache Management on AC3
 
-## Cache Management on AC3
-
-Laura Beatris, Full Stack Developer
+  Laura Beatris, Full Stack Developer
+</Layout>
 
 ---
+
+<Layout>
 
 ### Let's go back for a minute 
 
@@ -45,7 +46,11 @@ Laura Beatris, Full Stack Developer
 
 We need to understand how cache works on the web
 
+</Layout>
+
 ---
+
+<Layout>
 
 # What is cache and why it's necessary?
 
@@ -58,7 +63,11 @@ We need to understand how cache works on the web
 
 </Steps>
 
+</Layout>
+
 ---
+
+<Layout>
 
 # Client Side Cashing
 
@@ -72,36 +81,52 @@ We need to understand how cache works on the web
   https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html
 </a>
 
+</Layout>
+
 ---
+
+<Layout>
 
 ## Client Cache, Local Storage, Session Storage...
 
+</Layout>
+
 ---
+
+<Layout>
 
 ## Client Cache, Local Storage, Session Storage...
 
 ### It all ends up on the same goal
 
+</Layout>
+
 ---
+
+<Layout>
 
 # Persisting data on the web!
 
----
-
-# Persisting data through cache is hard 
+</Layout>
 
 ---
 
-<img
-  src={end}
-  style={{
-    maxHeight: 100,
-    marginBottom: '1.5em'
-  }}
-/>
+<Layout>
+
+# Persisting data through cache is difficult  
+
+</Layout>
+
+---
+
+<Layout showFooter={false}>
+
+## That's the end!
 
 - Slides: https://apollo-cache-management-talk.vercel.app/
 
 <h3>
   <SocialMediaHandle />
 </h3>
+
+</Layout>
