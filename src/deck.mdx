@@ -251,22 +251,7 @@ We need to understand how cache works on the web
 
 # Normalization algorithm on AC3 
 
-#### The response data objects are normalized before being saved to the cache store, but this process has some steps:
-
-<Steps>
-
-- The response data objects are splitted 
-- Each object receive an unique identifier, which is calculated by the `id` field and `__typename`
-- The normalized items are stored in a flat object 
-- After executing another request, the response data goes throught the same process and if there's a object with the same ID on the store, the fields of those object will be merged.
-
-</Steps>
-
-</Layout>
-
----
-
-### Let's see the normalization steps with more details with the images provided on https://www.apollographql.com/blog/demystifying-cache-normalization/
+#### Let's see the normalization algorithm steps with more details with the images provided on https://www.apollographql.com/blog/demystifying-cache-normalization/
 
 ---
 
