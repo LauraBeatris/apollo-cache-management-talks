@@ -2,6 +2,16 @@
 
 <img src="./docs/slides-preview.png" />
 
+## Goals 
+
+In the end of this talk will understand the following topics related to cache on Apollo:
+
+- Cache Normalization
+- Fetch Policies
+- Type Policies
+- Field Policies 
+- Pagination Helpers
+
 ## Development
 
 To run the presentation deck in development mode:
