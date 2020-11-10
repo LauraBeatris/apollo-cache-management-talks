@@ -1,5 +1,7 @@
 # Apollo Cache Management Talk 
 
+> [Watch the talk here](https://www.twitch.tv/videos/798481471)
+
 <img src="./docs/slides-preview.png" />
 
 ## Goals 
