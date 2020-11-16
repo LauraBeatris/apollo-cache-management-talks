@@ -1,12 +1,12 @@
-# Apollo Cache Management Talk 
+# Apollo Cache Management Talks 
 
-> [Watch the talk here](https://www.twitch.tv/videos/798481471)
+> [Apollo Day Talk](https://www.twitch.tv/videos/798481471)
 
 <img src="./docs/slides-preview.png" />
 
 ## Goals 
 
-In the end of this talk will understand the following topics related to cache on Apollo:
+Understand the following topics related to cache on Apollo:
 
 - Cache Normalization
 - Fetch Policies
