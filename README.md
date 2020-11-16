@@ -1,8 +1,8 @@
-# Apollo Cache Management Talks 
+<p align="center">
+  <img src="./docs/logo.png" width="400"/>
+</p>
 
 > [Apollo Day Talk](https://www.twitch.tv/videos/798481471)
-
-<img src="./docs/slides-preview.png" />
 
 ## Goals 
 
