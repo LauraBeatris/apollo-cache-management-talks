@@ -178,8 +178,6 @@ export const theme = rocketseatTheme;
 
 ---
 
-<Layout isInvert>
-
 <Invert>
 
 # Consequências de não entender a API de cache no Apollo:
@@ -193,8 +191,6 @@ export const theme = rocketseatTheme;
 </Steps>
 
 </Invert>
-
-</Layout>
 
 ---
 
@@ -298,8 +294,6 @@ export const theme = rocketseatTheme;
 
 <img src={badExampleQuery} style={{ height: 450 }} />
 
-#### Os campos do objeto são mesclados ao acessar a store com o identificador único de um tipo
-
 </Layout>
 
 ---
@@ -396,14 +390,6 @@ Parecido com `network-only`, mas não salva os dados no cache.
 
 1. Executa a query e as requisições ao servidor. 
 2. Retorna os dados
-
----
-
-## Atualizando o cache 
-
-#### O cache é atualizado automaticamente se os resultados das mutations possuírem o **mesmo tipo** que os da query requisitada, a fim de recuperar o identificador único e mesclar os campos.
-
-<img src={mutationExample} style={{ height: 400 }} />
 
 ---
 
