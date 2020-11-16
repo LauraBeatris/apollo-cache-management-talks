@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "start": "mdx-deck src/deck.mdx",
-    "build": "mdx-deck build src/deck.mdx",
-    "postbuild": "cpy --parents \"public/**\" ./dist"
+    "start-apollo-day": "mdx-deck src/deck.mdx",
+    "build-apollo-day": "mdx-deck build src/deck.mdx"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
