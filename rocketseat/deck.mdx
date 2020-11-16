@@ -8,7 +8,7 @@ import apolloClientImage from '../assets/images/apollo-client.png';
 import flatStructureExample from '../assets/images/flat-structure-example.png';
 import keyFieldsApi from '../assets/images/key-fields-api.png';
 import badExampleQuery from '../assets/images/bad-query-example-pt.png';
-import mutationExample from '../assets/images/mutation-example.png';
+import mutationExample from '../assets/images/mutation-example-pt.png';
 import deletingItemExample from '../assets/images/deleting-item-example.png';
 import addingItemExample from '../assets/images/adding-item-example.png';
 import disablingNormalizationExample from '../assets/images/disabling-normalization-example.png';
@@ -42,22 +42,11 @@ export const theme = rocketseatTheme;
 
 #### Sumário 
 
-- Conheça o Apollo Client 
 - Implementação de cache na web 
 - Dificuldades ao implementar cache em aplicações GraphQL 
 - A camada de abstração para lidar com cache no Apollo 
 
 </Invert>
-
----
-
-<Layout>
-
-## Mas antes de prosseguir, vamos voltar um pouco no tempo e responder algumas perguntas 
-
-<img src={goBack} style={{ maxHeight: 400 }} />
-
-</Layout>
 
 ---
 
@@ -129,8 +118,6 @@ export const theme = rocketseatTheme;
 
 ---
 
-<Layout isInvert>
-
 <Invert>
 
 # Mas não é tão fácil lidar com cache em aplicaçōes GraphQL
@@ -139,8 +126,6 @@ export const theme = rocketseatTheme;
 
 </Invert>
 
-</Layout>
-
 ---
 
 <Layout>
@@ -148,7 +133,7 @@ export const theme = rocketseatTheme;
 <Steps>
 
 - GraphQL API's possuem um único endpoint 
-- Dificil de prever as responses por causa da flexibilidade dos campos requisitados 
+- Difícil de prever as responses por causa da flexibilidade dos campos requisitados 
 - Clients que consumem GraphQL API's enviam corpos de dados nas requisições sempre com o método POST ao invés de GET
 
 </Steps>
@@ -217,7 +202,7 @@ export const theme = rocketseatTheme;
 
 # Tópicos importantes sobre cache no AC3 
 
-- Cache Normalization
+- Normalização dos dados de cache 
 - Fetch Policies
 - Type Policies
 - Field Policies 
@@ -231,7 +216,7 @@ export const theme = rocketseatTheme;
 # Normalização dos dados de cache 
 
 ### O Apollo utiliza in-memory caching, que é uma store de dados normalizados. 
-### Mas como o que é normalizaçāo e como esse processo acontece no Apollo?
+### Mas como o que é normalizaçāo e como esse processo ocorre?
 
 </Layout>
 
@@ -323,7 +308,6 @@ export const theme = rocketseatTheme;
 
 ---
 
-<Layout isInvert>
 <Invert>
 
 ## Estrutura de dados em que os dados normalizados são armazenados 
@@ -331,11 +315,9 @@ export const theme = rocketseatTheme;
 <img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_28-1024x346.png" style={{ height: 400 }} />
 
 </Invert>
-</Layout>
 
 ---
 
-<Layout isInvert>
 <Invert>
 
 ### Os objetos são facialmente acessiveis a partir dos seus identificados únicos, exemplo:
@@ -343,11 +325,9 @@ export const theme = rocketseatTheme;
 <img src={flatStructureExample} style={{ height: 400 }}/>
 
 </Invert>
-</Layout>
 
 ---
 
-<Layout isInvert>
 <Invert>
 
 ### As queries também são armazenadas para manter a ordem de uma lista de dados 
@@ -361,13 +341,12 @@ export const theme = rocketseatTheme;
 <br />
 
 </Invert>
-</Layout>
 
 ---
 
 <Layout>
 
-# Vamos falar sobre cache policies para entendermos como utilizar esses dados cacheados 
+# Vamos falar sobre cache policies para entendermos como utilizar os dados cacheados 
 
 - cache-first (Default)
 - cache-and-network 
@@ -488,7 +467,7 @@ as propriedades `read` ou `merge`
 
 ## E chegamos ao final!
 
-- Slides: https://apollo-cache-management-talk.vercel.app/
+- Slides: https://persisting-data-on-apollo-client.vercel.app/
 
 <h3>
   <SocialMediaHandle />
