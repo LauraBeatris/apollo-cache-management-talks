@@ -2,7 +2,7 @@
   <img src="./docs/logo.png" width="400"/>
 </p>
 
-> [Apollo Day Talk](https://www.twitch.tv/videos/798481471)
+> Apollo Day - [Talk](https://www.twitch.tv/videos/798481471) & [Slides](https://apollo-cache-management-talk.vercel.app/)
 
 ## Goals 
 
