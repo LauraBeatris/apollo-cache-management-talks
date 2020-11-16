@@ -12,17 +12,19 @@ export const IconContainer = styled.div`
   display: flex; 
   align-items: center;
 
-  span { 
+  a { 
+    color: inherit;
     font-weight: bold; 
     margin-left: 8px;
+    text-decoration: none;
   }
 
-  span, svg { 
+  a, svg { 
     font-size: 20px;
   }  
 
   ${({ isInvert }) => isInvert && css`
-    span { 
+    a { 
       color: #FFF;
     }
   `}
