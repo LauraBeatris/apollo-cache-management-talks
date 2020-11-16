@@ -216,7 +216,7 @@ export const theme = rocketseatTheme;
 # Normalização dos dados de cache 
 
 ### O Apollo utiliza in-memory caching, que é uma store de dados normalizados. 
-### Mas como o que é normalizaçāo e como esse processo ocorre?
+### Mas o que é normalizaçāo e como esse processo ocorre?
 
 </Layout>
 
@@ -224,7 +224,7 @@ export const theme = rocketseatTheme;
 
 <Invert>
 
-# Normalizaçāo de dados em banco de dados relacionais 
+# Normalizaçāo em banco de dados relacionais 
 
 ### "Database normalization is the process of restructuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity."
 
@@ -260,7 +260,6 @@ export const theme = rocketseatTheme;
 
 ---
 
-<Layout isInvert>
 <Invert>
 
 # Separando a response em objetos individuais  
@@ -268,11 +267,9 @@ export const theme = rocketseatTheme;
 <img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_26_1-1024x721.png" style={{ width: "85%", height: "55%" }} />
 
 </Invert>
-</Layout>
 
 ---
 
-<Layout isInvert>
 <Invert>
 
 # Atribuindo identificadores únicos para cada objeto, utilizando os campos de ``id`` e ``__typename`` 
@@ -280,7 +277,6 @@ export const theme = rocketseatTheme;
 <img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_27_1-1024x346.png" style={{ height: "60%" }} />
 
 </Invert>
-</Layout>
 
 ---
 
@@ -310,7 +306,7 @@ export const theme = rocketseatTheme;
 
 <Invert>
 
-## Estrutura de dados em que os dados normalizados são armazenados 
+## Estrutura de dados em que os objetos normalizados são armazenados 
 
 <img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_28-1024x346.png" style={{ height: 400 }} />
 
@@ -336,7 +332,7 @@ export const theme = rocketseatTheme;
 
 <br />
 
-<span>Apollo lida com cache em <strong>qualquer</strong> GraphQL operations</span>
+<span>Apollo lida com cache em <strong>qualquer</strong> operaçāo GraphQL</span>
 
 <br />
 
@@ -348,7 +344,7 @@ export const theme = rocketseatTheme;
 
 # Vamos falar sobre cache policies para entendermos como utilizar os dados cacheados 
 
-- cache-first (Default)
+- cache-first (Padrāo)
 - cache-and-network 
 - network-only 
 - no-cache 
@@ -376,7 +372,7 @@ Recomendada para lidar com dados que são **frequentemente** atualizados pois se
 1. Executa a query e checa se há dados cacheados. 
 2. Se há dados cacheados, vāo ser retornados diretamente. 
 3. Mesmo que exista dados no cache ou não, Apollo vai requisitar os dados mais recentes. 
-4. Atualiza os dados no cache ao mesclar os antigos com os novos 
+4. Atualiza os dados no cache ao mesclar os campos antigos com os novos por meio do identificador único
 
 --- 
 
@@ -405,7 +401,7 @@ Parecido com `network-only`, mas não salva os dados no cache.
 
 ## Atualizando o cache 
 
-O cache é atualizado automaticamente se os resultados das mutations possuírem o **mesmo tipo** que os dados da query requisitada, a fim de recuperar o identificador único e mesclar os dados do cache.
+#### O cache é atualizado automaticamente se os resultados das mutations possuírem o **mesmo tipo** que os da query requisitada, a fim de recuperar o identificador único e mesclar os campos.
 
 <img src={mutationExample} style={{ height: 400 }} />
 
@@ -422,7 +418,7 @@ O cache é atualizado automaticamente se os resultados das mutations possuírem 
 
 - Os dados da response não são relacionados com o tipo da query. 
 - Todos os items de uma lista não são retornados na response. 
-- A mutation não retorna o dados com a mesma ordem presente no cache.
+- A mutation não retorna os dados com a mesma ordem presente no cache.
 - A mutation adiciona ou remove dados. 
 
 Nesses casos, precisamos atualizar o cache manualmente.
@@ -467,7 +463,7 @@ as propriedades `read` ou `merge`
 
 ## E chegamos ao final!
 
-- Slides: persisting-data-on-apollo-client.vercel.app
+- Slides: https://persisting-data-on-apollo-client.vercel.app/
 
 <h3>
   <SocialMediaHandle />
