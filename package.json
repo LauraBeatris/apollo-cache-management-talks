@@ -1,7 +1,9 @@
 {
   "scripts": {
-    "start-apollo-day": "mdx-deck src/deck.mdx",
-    "build-apollo-day": "mdx-deck build src/deck.mdx"
+    "start-apollo-day": "mdx-deck apollo-day/deck.mdx",
+    "build-apollo-day": "mdx-deck build apollo-day/deck.mdx",
+    "start-rocketseat": "mdx-deck rocketseat/deck.mdx",
+    "build-rocketseat": "mdx-deck build rocketseat/deck.mdx"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
