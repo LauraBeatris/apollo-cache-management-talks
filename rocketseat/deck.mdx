@@ -1,0 +1,497 @@
+import { Head, Steps, Invert } from 'mdx-deck';
+
+import SocialMediaHandle from '../components/SocialMediaHandle';
+import Layout from "../components/Layout";
+import databaseNormalization from '../assets/images/database-normalization.png';
+import clientSideCashing from '../assets/images/client-side-cashing.png';
+import apolloClientImage from '../assets/images/apollo-client.png';
+import flatStructureExample from '../assets/images/flat-structure-example.png';
+import keyFieldsApi from '../assets/images/key-fields-api.png';
+import badExampleQuery from '../assets/images/bad-query-example-pt.png';
+import mutationExample from '../assets/images/mutation-example.png';
+import deletingItemExample from '../assets/images/deleting-item-example.png';
+import addingItemExample from '../assets/images/adding-item-example.png';
+import disablingNormalizationExample from '../assets/images/disabling-normalization-example.png';
+import readFunctionExample from '../assets/images/read-function-example.png';
+import mergeFunctionExample from '../assets/images/merge-function-example.png';
+import paginationHelperExample from '../assets/images/pagination-helper-example.png';
+import typePoliciesExample from '../assets/images/type-policies-example.png';
+import apolloClientIcon from '../assets/icons/apollo-client.png';
+import goBack from '../assets/gifs/go-back.gif';
+import difficult from '../assets/gifs/difficult.gif';
+import rainbow from '../assets/gifs/rainbow.gif';
+import { rocketseatTheme } from '../theme';
+
+export const theme = rocketseatTheme;
+
+<Layout>
+<Head>
+  <title>Persistindo dados no Apollo Client 3</title>
+  <link rel='icon' href={apolloClientIcon} />
+</Head>
+
+# Persistindo dados no Apollo Client 3 
+
+### Laura Beatris, Full Stack Developer 
+
+</Layout>
+
+---
+
+<Invert>
+
+#### Sumário 
+
+- Conheça o Apollo Client 
+- Implementação de cache na web 
+- Dificuldades ao implementar cache em aplicações GraphQL 
+- A camada de abstração para lidar com cache no Apollo 
+
+</Invert>
+
+---
+
+<Layout>
+
+## Mas antes de prosseguir, vamos voltar um pouco no tempo e responder algumas perguntas 
+
+<img src={goBack} style={{ maxHeight: 400 }} />
+
+</Layout>
+
+---
+
+# 🤔
+
+#### O que é cache e qual sua importância?
+
+#### Como é a implementação de cache na web desde antigamente? 
+
+---
+
+<Invert>
+
+- Os dados de cache são salvos na memória do dispositivo quando navegamos pela internet
+- Diminui drasticamente o tempo de carregamento das aplicações web 
+- Evita requisições desnecessárias para o servidor 
+
+</Invert>
+
+---
+
+<Invert>
+
+<img src={clientSideCashing} style={{ height: 400 }} />
+
+- As estratégias de caching na web existem desde os anos 90
+- Via HTTP headers (Last-Modified, Cache-Control, etc)
+
+<a href='https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html'>
+  https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html
+</a>
+
+</Invert>
+
+---
+
+<Invert>
+
+## Mas o cache não está apenas relacionado ao carregamento de aplicações
+## Persistir dados nas aplicações web é uma forma de implementar cache 
+
+</Invert>
+
+---
+
+<Layout>
+
+## Client Cache, Local Storage, Session Storage...
+
+</Layout>
+
+---
+
+<Layout>
+
+## Client Cache, Local Storage, Session Storage...
+
+### Todos possuem o mesmo objetivo 
+
+</Layout>
+
+---
+
+<Layout>
+
+# Persistir dados e prover uma melhor experiência para o usuário  
+
+</Layout>
+
+---
+
+<Layout isInvert>
+
+<Invert>
+
+# Mas não é tão fácil lidar com cache em aplicaçōes GraphQL
+
+<img src={difficult} style={{ height: 400 }} />
+
+</Invert>
+
+</Layout>
+
+---
+
+<Layout>
+
+<Steps>
+
+- GraphQL API's possuem um único endpoint 
+- Dificil de prever as responses por causa da flexibilidade dos campos requisitados 
+- Clients que consumem GraphQL API's enviam corpos de dados nas requisições sempre com o método POST ao invés de GET
+
+</Steps>
+
+</Layout>
+
+---
+
+<Layout>
+
+# Mas o Apollo Client prove uma camada de abstração para lidarmos com cache 
+
+<img 
+  src='https://wp.apollographql.com/wp-content/uploads/2020/07/the_cache_1.png' 
+  style={{
+    height: 400,
+    borderRadius: 10
+  }}
+/>
+
+<br />
+
+<small>
+  Fonte: 
+  {' '}
+  <a href='https://www.apollographql.com/blog/demystifying-cache-normalization/'>
+  https://www.apollographql.com/blog/demystifying-cache-normalization/
+  </a>
+</small>
+
+</Layout>
+
+---
+
+<Layout>
+
+### Agora só precisamos entender como essa API funciona 
+
+<img src={rainbow} style={{ height: 350 }} />
+
+</Layout>
+
+---
+
+<Layout isInvert>
+
+<Invert>
+
+# Consequências de não entender a API de cache no Apollo:
+
+<Steps>
+
+- Requisições desnecessárias
+- Utilizar uma fetch policy errada pode conduzir para uma UX ruim
+- Cachear os campos errados 
+
+</Steps>
+
+</Invert>
+
+</Layout>
+
+---
+
+<Layout>
+
+# Tópicos importantes sobre cache no AC3 
+
+- Cache Normalization
+- Fetch Policies
+- Type Policies
+- Field Policies 
+
+</Layout>
+
+---
+
+<Layout>
+
+# Normalização dos dados de cache 
+
+### O Apollo utiliza in-memory caching, que é uma store de dados normalizados. 
+### Mas como o que é normalizaçāo e como esse processo acontece no Apollo?
+
+</Layout>
+
+---
+
+<Invert>
+
+# Normalizaçāo de dados em banco de dados relacionais 
+
+### "Database normalization is the process of restructuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity."
+
+[https://www.sqlshack.com/what-is-database-normalization-in-sql-server/#:~:text=%E2%80%9CDatabase%20normalization%20is%20the%20process,part%20of%20his%20relational%20model](https://www.sqlshack.com/what-is-database-normalization-in-sql-server/#:~:text=%E2%80%9CDatabase%20normalization%20is%20the%20process,part%20of%20his%20relational%20model)
+
+<img src={databaseNormalization} style={{ height: 350 }} />
+
+</Invert>
+
+--- 
+
+<Layout>
+
+# Algoritmo de normalizaçāo no AC3 
+
+#### Vamos ver as etapas de implementaçāo do algoritmo com as imagens providas em https://www.apollographql.com/blog/demystifying-cache-normalization/
+
+</Layout>
+
+---
+
+<Invert>
+
+## Requisitando os dados e começando o processo de normalizaçāo 
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/GetAllTodos_1-1024x311.png" style={{ height: "30%" }} />
+
+<br />
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_25-1-1024x275.png" style={{ height: "30%" }} />
+
+</Invert>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+# Separando a response em objetos individuais  
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_26_1-1024x721.png" style={{ width: "85%", height: "55%" }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+# Atribuindo identificadores únicos para cada objeto, utilizando os campos de ``id`` e ``__typename`` 
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_27_1-1024x346.png" style={{ height: "60%" }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+## Personalizando o identificador único de um tipo
+
+<img src={keyFieldsApi} />
+
+</Layout>
+
+---
+
+<Layout>
+
+## Nunca se esqueça de requisitar os identificadores únicos de um tipo ⚠️
+
+### Por não requisitar os identificadores únicos de um tipo, os dados retornados não serão normalizados e o cache não irá ser armazenado corretamente 
+
+<img src={badExampleQuery} style={{ height: 450 }} />
+
+#### Os campos do objeto são mesclados ao acessar a store com o identificador único de um tipo
+
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+## Estrutura de dados em que os dados normalizados são armazenados 
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_28-1024x346.png" style={{ height: 400 }} />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+### Os objetos são facialmente acessiveis a partir dos seus identificados únicos, exemplo:
+
+<img src={flatStructureExample} style={{ height: 400 }}/>
+
+</Invert>
+</Layout>
+
+---
+
+<Layout isInvert>
+<Invert>
+
+### As queries também são armazenadas para manter a ordem de uma lista de dados 
+
+<img src="https://wp.apollographql.com/wp-content/uploads/2020/07/Frame_29_1-1024x596.png" style={{ height: "65%"}} />
+
+<br />
+
+<span>Apollo lida com cache em <strong>qualquer</strong> GraphQL operations</span>
+
+<br />
+
+</Invert>
+</Layout>
+
+---
+
+<Layout>
+
+# Vamos falar sobre cache policies para entendermos como utilizar esses dados cacheados 
+
+- cache-first (Default)
+- cache-and-network 
+- network-only 
+- no-cache 
+
+</Layout>
+
+---
+
+<Invert>
+
+# cache-first
+
+1. Executa a query e checa se há dados cacheados. 
+2. Se há dados cacheados, vão ser retornados diretamente, evitando requisitar para o servidor. 
+3. Se não há dados cacheados, Apollo vai requisitar os dados para o servidor e salvar no cache.
+
+</Invert>
+
+---
+
+# cache-and-network
+
+Recomendada para lidar com dados que são **frequentemente** atualizados pois sempre retorna os dados mais recentes. Exemplo: Redes sociais. 
+
+1. Executa a query e checa se há dados cacheados. 
+2. Se há dados cacheados, vāo ser retornados diretamente. 
+3. Mesmo que exista dados no cache ou não, Apollo vai requisitar os dados mais recentes. 
+4. Atualiza os dados no cache ao mesclar os antigos com os novos 
+
+--- 
+
+<Invert>
+
+# network-only 
+
+Essa policy **nunca retorna dados obsoletos** pois as requisições ao servidor sempre serão executadas, e os dados serão salvos no cache. 
+
+1. Executa a query e as requisições ao servidor. 
+2. Retorna os dados e salva no cache.
+
+</Invert>
+
+---
+
+
+# no-cache  
+
+Parecido com `network-only`, mas não salva os dados no cache.
+
+1. Executa a query e as requisições ao servidor. 
+2. Retorna os dados
+
+---
+
+## Atualizando o cache 
+
+O cache é atualizado automaticamente se os resultados das mutations possuírem o **mesmo tipo** que os dados da query requisitada, a fim de recuperar o identificador único e mesclar os dados do cache.
+
+<img src={mutationExample} style={{ height: 400 }} />
+
+---
+
+## Casos em que o cache é automaticamente atualizado:
+
+- Ao editar uma única entidade e retornar o mesmo tipo na response. 
+- Ao editar várias entidades e retornar os mesmos tipos na response.
+
+---
+
+### Casos em que o cache não é atualizado automaticamente:
+
+- Os dados da response não são relacionados com o tipo da query. 
+- Todos os items de uma lista não são retornados na response. 
+- A mutation não retorna o dados com a mesma ordem presente no cache.
+- A mutation adiciona ou remove dados. 
+
+Nesses casos, precisamos atualizar o cache manualmente.
+
+---
+
+# Atualizando o cache ao adicionar um item novo na lista
+
+<img src={addingItemExample} style={{ height: 550 }} />
+
+---
+
+# Atualizando o cache ao deletar um item da lista
+
+<img src={deletingItemExample} style={{ height: 550 }} />
+
+---
+
+# Type Policies 
+
+AC3 prove uma API para customizar como o cache interage com certos tipos, ao mapear 
+o ``__typename`` para a propriedade ``typePolicies`` no ``InMemoryCache`` 
+
+<img src={typePoliciesExample} style={{ height: "50%" }}/>
+
+---
+
+# Field Policies - Customizando o comportamento dos campos cacheados  
+
+É possível customizar como um campo é lido ou salvo no cache, ao prover 
+as propriedades `read` ou `merge`
+
+---
+
+<img src={readFunctionExample} style={{ height: "50%" }}/>
+
+<img src={mergeFunctionExample} style={{ height: "50%"}} />
+
+---
+
+<Layout showFooter={false}>
+
+## E chegamos ao final!
+
+- Slides: https://apollo-cache-management-talk.vercel.app/
+
+<h3>
+  <SocialMediaHandle />
+</h3>
+
+</Layout>

@@ -1,7 +1,6 @@
-import { github } from "@code-surfer/themes";
+import { github, dracula } from "@code-surfer/themes";
 
-const theme = {
-  ...github,
+const sharedTheme = {
   googleFont: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap",
   fonts: {
     body: '"Quicksand", Open Sans',
@@ -27,4 +26,12 @@ const theme = {
   }
 };
 
-export default theme;
+export const apolloDayTheme = {
+  ...github,
+  ...sharedTheme, 
+}
+
+export const rocketseatTheme = {
+  ...dracula,
+  sharedTheme
+}
