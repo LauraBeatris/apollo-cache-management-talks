@@ -33,5 +33,5 @@ export const apolloDayTheme = {
 
 export const rocketseatTheme = {
   ...dracula,
-  sharedTheme
+  ...sharedTheme
 }
