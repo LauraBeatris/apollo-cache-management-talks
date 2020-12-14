@@ -5,6 +5,7 @@
 ## Events
 
 > Apollo Day - [Talk](https://www.twitch.tv/videos/798481471) & [Slides](https://apollo-cache-management-talk.vercel.app/)
+
 > DoWhile - [Slides](https://persisting-data-on-apollo-client.vercel.app/)
 
 ## Goals 
